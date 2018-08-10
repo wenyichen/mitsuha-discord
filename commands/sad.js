@@ -16,8 +16,8 @@ module.exports = {
 		voiceChannel.join()
 			.then(connection => {
 				console.log('joined Channel');
-				const stream = ytdl('https://youtu.be/L_jWHffIx5E?t=36s', { filter: 'audioonly' });
-				const dispatcher = connection.playStream(stream);
+				const stream = ytdl('https://youtu.be/L_jWHffIx5E?', { filter: 'audioonly' });
+				const dispatcher = connection.playStream(stream, { 'seek': 36 });
 
 				dispatcher.on('end', () => {
 					console.log('leaving Channel');
