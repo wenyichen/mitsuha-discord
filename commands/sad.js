@@ -6,7 +6,7 @@ module.exports = {
     description: 'this is so sad!',
     execute(message, args) {
         if (message.channel.type !== 'text') return;
-        const { voiceChannel } = message.member.channel;
+        const { voiceChannel } = message.member.voiceChannel;
 
         if (!voiceChannel) {
             return message.reply("You're not in a channel owo!");
