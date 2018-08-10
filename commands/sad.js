@@ -12,6 +12,11 @@ module.exports = {
 			return message.reply('You\'re not in a channel owo!');
 		}
 
+		// handle bot already in channel
+		if (voiceChannel.connection) {
+			voiceChannel.leave();
+		}
+
 		message.reply('Playing Despacito!');
 		voiceChannel.join()
 			.then(connection => {
@@ -22,8 +27,7 @@ module.exports = {
 				dispatcher.on('end', () => {
 					console.log('leaving Channel');
 					voiceChannel.leave();
-				})
-					.catch(console.error());
+				});
 			})
 			.catch(console.error(voiceChannel));
 	},

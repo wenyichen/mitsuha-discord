@@ -6,6 +6,9 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 // const AWS = require('aws-sdk');
 
+// handle uncaught promise
+process.on('unhandledRejection', error => console.error(`Uncaught Promise Rejection:\n${error}`));
+
 // setup aws bucket
 // AWS.config.update({region: process.env.S3_REGION});
 // var s3 = new AWS.S3();

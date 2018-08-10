@@ -1,6 +1,3 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
 module.exports = {
 	name: 'notsad',
 	description: 'not sad anymore!',
@@ -14,7 +11,7 @@ module.exports = {
 
 		message.reply('gomenasai :(!');
 		if (voiceChannel.connection) {
-			client.leaveVoiceChannel(voiceChannel);
+			voiceChannel.leave();
 		}
 	},
 };
