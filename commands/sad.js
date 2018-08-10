@@ -6,7 +6,7 @@ module.exports = {
 	description: 'this is so sad!',
 	execute(message) {
 		if (message.channel.type !== 'text') return;
-		const { voiceChannel } = message.member.voiceChannel;
+		const voiceChannel = message.member.voiceChannel;
 
 		console.log(voiceChannel);
 		if (!voiceChannel) {
