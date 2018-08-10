@@ -14,6 +14,7 @@ module.exports = {
 		}
 
 		message.reply('Playing Despacito!');
+		console.log(voiceChannel);
 		voiceChannel.join()
 			.then(connection => {
 				console.log('joined Channel');
@@ -23,7 +24,8 @@ module.exports = {
 				dispatcher.on('end', () => {
 					console.log('leaving Channel');
 					voiceChannel.leave();
-				});
+				})
+					.catch(console.error());
 			})
 			.catch(console.error(voiceChannel));
 	},
