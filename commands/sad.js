@@ -12,11 +12,16 @@ module.exports = {
             return message.reply("You're not in a channel owo!");
         }
 
+        message.reply("Playing Despacito!")
         voiceChannel.join().then(connection => {
+            console.log("joined Channel")
             const stream = ytdl('https://youtu.be/L_jWHffIx5E?t=36s', { filter: 'audioonly' });
             const dispatcher = connection.playStream(stream);
 
-            dispatcher.on('end', () => voiceChannel.leave());
+            dispatcher.on('end', () => {
+                console.log("leaving Channel")
+                voiceChannel.leave();
+            });
         });
     },
 };
