@@ -11,9 +11,7 @@ module.exports = {
         if (!voiceChannel) {
             return message.reply("You're not in a channel owo!");
         }
-
-        message.channel.send('Playing Despacito!');
-
+        
         voiceChannel.join().then(connection => {
             const stream = ytdl('https://youtu.be/L_jWHffIx5E?t=36s', { filter: 'audioonly' });
             const dispatcher = connection.playStream(stream);
