@@ -17,7 +17,7 @@ module.exports = {
 			voiceChannel.leave();
 		}
 
-		message.reply('Playing Despacito!');
+		message.reply('playing Despacito!');
 		voiceChannel.join()
 			.then(connection => {
 				console.log('joined Channel');
