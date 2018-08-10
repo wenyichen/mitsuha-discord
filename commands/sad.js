@@ -6,12 +6,12 @@ module.exports = {
     description: 'this is so sad!',
     execute(message, args) {
         if (message.channel.type !== 'text') return;
-        const { voiceChannel } = message.member;
+        const { voiceChannel } = message.member.channel;
 
         if (!voiceChannel) {
             return message.reply("You're not in a channel owo!");
         }
-        
+
         voiceChannel.join().then(connection => {
             const stream = ytdl('https://youtu.be/L_jWHffIx5E?t=36s', { filter: 'audioonly' });
             const dispatcher = connection.playStream(stream);
