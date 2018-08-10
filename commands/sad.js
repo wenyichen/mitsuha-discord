@@ -8,6 +8,7 @@ module.exports = {
 		if (message.channel.type !== 'text') return;
 		const { voiceChannel } = message.member.voiceChannel;
 
+		console.log(voiceChannel);
 		if (!voiceChannel) {
 			return message.reply('You\'re not in a channel owo!');
 		}
