@@ -2,14 +2,14 @@ const ytdl = require('ytdl-core');
 
 
 module.exports = {
-	name: 'sad',
+	name: 'thisissosad',
 	description: 'this is so sad!',
 	execute(message) {
 		if (message.channel.type !== 'text') return;
 		const voiceChannel = message.member.voiceChannel;
 
 		if (!voiceChannel) {
-			return message.reply('You\'re not in a channel owo!');
+			return message.reply('You\'re not in a channel! òwó');
 		}
 
 		// handle bot already in channel
@@ -17,7 +17,7 @@ module.exports = {
 			voiceChannel.leave();
 		}
 
-		message.reply('playing Despacito!');
+		message.reply('this is so sad! Playing Despacito!');
 		voiceChannel.join()
 			.then(connection => {
 				console.log('joined Channel');
