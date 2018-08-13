@@ -1,5 +1,6 @@
 module.exports = {
-	name: 'thisisnotsad',
+	name: 'stop',
+	aliases: ['thisissosad', 'omaewadareda'],
 	description: 'not sad anymore!',
 	execute(message) {
 		if (message.channel.type !== 'text') return;
@@ -9,7 +10,7 @@ module.exports = {
 			return message.reply('You\'re not in a channel òwó!');
 		}
 
-		message.reply('sorry, uwu!');
+		message.reply('sorry! uwu');
 		if (voiceChannel.connection) {
 			voiceChannel.leave();
 		}
