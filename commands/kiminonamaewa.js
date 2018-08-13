@@ -1,4 +1,4 @@
-const play = require('/util/play.js');
+const play = require('../util/play');
 
 module.exports = {
 	name: 'kiminonamaewa',
