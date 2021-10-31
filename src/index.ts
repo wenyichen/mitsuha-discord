@@ -79,7 +79,7 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.on("messageCreate", async (interaction) => {
+client.on("message", async (interaction) => {
   console.log(interaction)
   if (
     interaction.author.username !== KARUTA_USERNAME ||
