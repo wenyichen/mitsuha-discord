@@ -3,7 +3,7 @@ import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 import { Client, Intents } from "discord.js";
 import { INTEGER, Sequelize, STRING, TEXT } from "sequelize/types";
-import { KARUTA_USERNAME } from "./constants";
+import { CLIENT_ID, KARUTA_USERNAME } from "./constants";
 const { TOKEN, DATABASE, USERNAME, PASSWORD, HOST, PORT } =
   process.env;
 
@@ -59,8 +59,7 @@ const commands = [
 const rest = new REST({ version: "9" }).setToken(TOKEN as string);
 
 rest
-  // @ts-ignore
-  .put(Routes.applicationCommands(clientId), { body: commands })
+  .put(Routes.applicationCommands(CLIENT_ID) as any, { body: commands })
   .then(() => console.log("Successfully registered application commands."))
   .catch(console.error);
 
