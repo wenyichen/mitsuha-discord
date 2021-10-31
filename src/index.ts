@@ -4,19 +4,18 @@ import { Routes } from "discord-api-types/v9";
 import { Client, Intents } from "discord.js";
 import { INTEGER, Sequelize, STRING, TEXT } from "sequelize/types";
 import { CLIENT_ID, KARUTA_USERNAME } from "./constants";
-const { TOKEN, DATABASE, USERNAME, PASSWORD, HOST, PORT } =
-  process.env;
+const { TOKEN, DATABASE, USERNAME, PASSWORD, HOST, PORT } = process.env;
 
 if (!TOKEN) {
-	console.error("No token")
-	process.exit(1);
+  console.error("No token");
+  process.exit(1);
 }
 
 // if (!(TOKEN && DATABASE && USERNAME && PASSWORD && HOST && PORT)) {
 //   process.exit(1);
 // }
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 // var sequelize = new Sequelize(DATABASE, USERNAME, PASSWORD, {
 //   host: HOST,
@@ -65,7 +64,7 @@ rest
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
-//   Tags.sync();
+  //   Tags.sync();
   console.log("Ready!");
 });
 
@@ -79,8 +78,8 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.on("message", async (interaction) => {
-  console.log(interaction)
+client.on("messageCreate", async (interaction) => {
+  console.log(interaction);
   if (
     interaction.author.username !== KARUTA_USERNAME ||
     !interaction.author.bot
@@ -89,18 +88,18 @@ client.on("message", async (interaction) => {
   }
   const embed = interaction.embeds[0];
   if (embed) {
-	  if (embed.title === "Visit Character") {
-      console.log(interaction)
+    if (embed.title === "Visit Character") {
+      console.log(interaction);
     }
   }
-  
+
   // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-//   const tag = await Tags.upsert({
-//     name: "",
-//     description: "",
-//     username: "",
-//   });
-//   return;
+  //   const tag = await Tags.upsert({
+  //     name: "",
+  //     description: "",
+  //     username: "",
+  //   });
+  //   return;
 });
 
 // client.on("messageUpdate", async (interaction) => {
