@@ -78,10 +78,10 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.on("messageCreate", async (interaction) => {
+client.on("messageUpdate", async (interaction) => {
   console.log(interaction);
   if (
-    interaction.author.username !== KARUTA_USERNAME ||
+    interaction.author?.username !== KARUTA_USERNAME ||
     !interaction.author.bot
   ) {
     return;
@@ -101,22 +101,6 @@ client.on("messageCreate", async (interaction) => {
   //   });
   //   return;
 });
-
-// client.on("messageUpdate", async (interaction) => {
-// 	interaction.
-// 	if (
-// 	  interaction.author.username !== KARUTA_USERNAME ||
-// 	  !interaction.author.bot
-// 	) {
-// 	  return;
-// 	}
-//   // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-//   const tag = await Tags.upsert({
-//     name: "",
-//     description: "",
-//     username: "",
-//   });
-// });
 
 // Login to Discord with your client's token
 client.login(TOKEN);
