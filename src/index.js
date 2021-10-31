@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const builders_1 = require("@discordjs/builders");
 const rest_1 = require("@discordjs/rest");
-const discord_api_types_1 = require("discord-api-types");
+const v9_1 = require("discord-api-types/v9");
 const discord_js_1 = require("discord.js");
 const constants_1 = require("./constants");
 const { TOKEN, DATABASE, USERNAME, PASSWORD, HOST, PORT } = process.env;
@@ -52,7 +52,7 @@ const commands = [
 const rest = new rest_1.REST({ version: "9" }).setToken(TOKEN);
 rest
     // @ts-ignore
-    .put(discord_api_types_1.Routes.applicationCommands(clientId), { body: commands })
+    .put(v9_1.Routes.applicationCommands(clientId), { body: commands })
     .then(() => console.log("Successfully registered application commands."))
     .catch(console.error);
 // When the client is ready, run this code (only once)
