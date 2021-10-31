@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { REST } from "@discordjs/rest";
-import { Routes } from "discord-api-types";
+import { Routes } from "discord-api-types/v9";
 import { Client, Intents } from "discord.js";
 import { INTEGER, Sequelize, STRING, TEXT } from "sequelize/types";
 import { KARUTA_USERNAME } from "./constants";
@@ -56,7 +56,7 @@ const commands = [
     .setDescription("Replies with pong!"),
 ].map((command) => command.toJSON());
 
-const rest = new REST({ version: "9" }).setToken(TOKEN);
+const rest = new REST({ version: "9" }).setToken(TOKEN as string);
 
 rest
   // @ts-ignore
@@ -81,6 +81,7 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 client.on("messageCreate", async (interaction) => {
+  console.log(interaction)
   if (
     interaction.author.username !== KARUTA_USERNAME ||
     !interaction.author.bot
@@ -89,8 +90,9 @@ client.on("messageCreate", async (interaction) => {
   }
   const embed = interaction.embeds[0];
   if (embed) {
-	  if (embed.title === "Visit Character")
-	  embed.fields.at(0)?.name
+	  if (embed.title === "Visit Character") {
+      console.log(interaction)
+    }
   }
   
   // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
